@@ -59,18 +59,31 @@ class CircleGenerate(Entity):
 class CodeText(Entity):
     def __init__(self):
         super().__init__()
-        main_text = Text(
+        self.main_text = Text(
             text=open('./main.py','r').read(),
             alpha=0.2,
             parent=Entity(),
-            position=(random.uniform(-1, -0.5), random.uniform(0.8, 0))
+            position=(random.uniform(-1, -0.5), random.uniform(0.4, 0.2))
         )
-        components = Text(
+        self.components = Text(
             text=open('./components.py','r').read(),
             alpha=0.2,
             parent=Entity(),
-            position=(random.uniform(0,0.5),random.uniform(0.8,0))
+            position=(random.uniform(0,0.5),random.uniform(0.4,0.2))
         )
+        self.github = Text(
+            text='open source on https://github.com/4Tudo/Readme_non0x00',
+            alpha=0.4,
+            parent=Entity(),
+            position=(random.uniform(0,0.1),random.uniform(0.3,0))
+        )
+    def input(self,event):
+        if event == 'space':
+            CodeText()
+            destroy(self.main_text)
+            destroy(self.components)
+            destroy(self.github)
+            destroy(self)
 
 if __name__ == '__main__':
     app = Ursina()
