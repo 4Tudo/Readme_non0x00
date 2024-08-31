@@ -14,7 +14,7 @@ window.collider_counter.visible = False
 window.fullscreen = True
 
 filters = CommonFilters(app.win,app.cam)
-filters.set_msaa(samples=128)
+filters.set_msaa(samples=128)   # 128x WTF?!
 filters.set_bloom(size='large',intensity=1,blend=(0.6,0.8,0.6,0))
 # EditorCamera()
 name = Text(
